@@ -1,9 +1,9 @@
-FROM openjdk:11 AS BUILD_IMAGE 
+FROM openjdk:17 AS BUILD_IMAGE 
 RUN apt-get update && apt-get install maven -y
 RUN git clone https://github.com/KarthikKunchala23/javaApp.git
 RUN cd javaApp && git checkout Development && mvn clean install
 
-FROM tomcat:9-jre11
+FROM tomcat:9-jre17
 LABEL Service="tomcat"
 LABEL Project="JavaApp"
 LABEL Author="Karthik Kunchala"
