@@ -1,6 +1,10 @@
 FROM openjdk:17-jdk AS BUILD_IMAGE 
 RUN apt-get update && apt-get install maven -y
 RUN git clone https://github.com/KarthikKunchala23/javaApp.git
+WORKDIR /javaApp
+RUN java -version
+RUN mvn --version
+RUN mvn clean install -DskipTests -U
 RUN cd javaApp && git checkout Development && mvn clean install
 
 FROM tomcat:9-jre17
